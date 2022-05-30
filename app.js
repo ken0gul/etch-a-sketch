@@ -41,11 +41,11 @@ document.querySelector('button').addEventListener('click', ()=> {
         document.querySelectorAll('div').forEach(div => {
     
             div.addEventListener('mouseover', e => {
-                 e.target.style.backgroundColor = 'white'
+                e.target.style.backgroundColor = `rgb(${Math.random()*255+1},${Math.random()*255 + 1},${Math.random()*255 +1})`
             })
             
         
-            div.addEventListener('mouseout', e=> e.target.style.backgroundColor = 'black');
+            // div.addEventListener('mouseout', e=> e.target.style.backgroundColor = 'black');
            
         })
     }
@@ -57,10 +57,10 @@ document.querySelector('button').addEventListener('click', ()=> {
 document.querySelectorAll('div').forEach(div => {
     
     div.addEventListener('mouseover', e => {
-         e.target.style.backgroundColor = 'white'
+         e.target.style.backgroundColor = `rgb(${Math.random()*255+1},${Math.random()*255 + 1},${Math.random()*255 +1})`
     })
     
 
-    div.addEventListener('mouseout', e=> e.target.style.backgroundColor = 'black');
+    // div.addEventListener('mouseout', e=> e.target.style.backgroundColor = 'black');
    
 })
