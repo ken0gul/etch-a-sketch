@@ -16,6 +16,8 @@ for (let i = 1; i <= 16; i++) {
 // Add a button to send a prompt to user
 const button = `<button>Restart</button>`;
 container.insertAdjacentHTML("beforebegin", button);
+const erase = `<button class="erase">Erase</button>`;
+container.insertAdjacentHTML("beforebegin", erase);
 
 // Add an event listener
 
@@ -63,4 +65,10 @@ document.querySelectorAll('div').forEach(div => {
 
     // div.addEventListener('mouseout', e=> e.target.style.backgroundColor = 'black');
    
+})
+
+
+// Erase button
+document.querySelector('.erase').addEventListener('click', ()=> {
+    document.querySelectorAll('div').forEach(div => div.style.backgroundColor = 'black');
 })
