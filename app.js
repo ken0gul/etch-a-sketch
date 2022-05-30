@@ -21,6 +21,7 @@ container.insertAdjacentHTML("beforebegin", button);
 
 document.querySelector('button').addEventListener('click', ()=> {
     let input = Number(prompt('Enter:'))**2;
+    if (Math.sqrt(input) > 100) return;
     document.querySelectorAll('div').forEach(div => div.remove())
     let newContainer = document.createElement('div');
     newContainer.classList.add('container');
@@ -34,8 +35,8 @@ document.querySelector('button').addEventListener('click', ()=> {
         newContainer.style.gridTemplateColumns = `repeat(${Math.sqrt(input)}, 1fr)`;
         newContainer.style.gridTemplateRows = `repeat(${Math.sqrt(input)}, 1fr)`;
         newContainer.childNodes.forEach(div => {
-            div.style.width =`${300/(Math.sqrt(input))}px`
-            div.style.height = `${300/(Math.sqrt(input))}px`
+            div.style.width =`${900/(Math.sqrt(input))}px`
+            div.style.height = `${900/(Math.sqrt(input))}px`
         })
         document.querySelectorAll('div').forEach(div => {
     
