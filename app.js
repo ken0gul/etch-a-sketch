@@ -14,14 +14,70 @@ function darkenCells(e) {
 }
 
 // Creating grid cells
-for (let i = 1; i <= 16; i++) {
-     let cells = document.createElement('div');
-     cells.classList.add('cell');
-     
-    container.appendChild(cells);
+// for (let i = 1; i <= 16; i++) {
+//     let cells = document.createElement('div');
+//     cells.classList.add('cell');
+    
+//    container.appendChild(cells);
+// }
+
+
+function createGrids (size) {
+   container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+   container.style.gridTemplateRows =`repeat(${size}, 1fr)`;
+  
+   for (let i =0; i < size**2; i++) {
+  let cells = document.createElement('div');
+    cells.classList.add('cell');
+   container.insertAdjacentElement("beforeend",cells);
+   }
+
 }
 
+createGrids(16)
 
+// Creating new grid cells
+function newGridCells() {
+    let input = Number(prompt('Enter:'));
+    let inputMax = input**2
+    container.querySelectorAll('div').forEach(div=> div.remove());
+    // let newContainer = document.createElement('div');
+    // newContainer.classList.add('container');
+    // document.body.appendChild(newContainer);
+    container.style.gridTemplateColumns = `repeat(${input}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${input}, 1fr)`;
+    for(let i=1; i <= inputMax; i++) {
+        // Creating new cells
+        let newCells = document.createElement('div');
+        container.appendChild(newCells);
+       
+        
+        document.querySelectorAll('div').forEach(div => {
+    
+            div.addEventListener('mouseover', randomHoverEffect);
+               
+            const darkenEffect = document.querySelector('.darken');
+            if (color < 1) {
+
+                darkenEffect.addEventListener('click', (e) => {
+                    div.removeEventListener('mouseover', randomHoverEffect);
+                    div.style.backgroundColor = 'white';
+                    div.style.border = '1px solid black';
+                    
+                    div.addEventListener('mouseenter', darkenCells);          
+                    
+                })
+            } 
+        })
+    }
+
+    // Code below can be used if we give each div 225px height and width
+
+    // document.querySelector(".container").childNodes.forEach(div => {
+    //     div.style.width =`${900/input}px`
+    //     div.style.height = `${900/input}px`
+    // })
+}
 
 
 // Add a button to send a prompt to user
@@ -32,68 +88,12 @@ container.insertAdjacentHTML("beforebegin", erase);
 const darken = `<button class="darken">Darken</button>`;
 container.insertAdjacentHTML('beforebegin', darken)
 
+
+
+
 // Add an event listener
 
-document.querySelector('button').addEventListener('click', ()=> {
-    let input = Number(prompt('Enter:'))**2;
-    if (Math.sqrt(input) > 100) return;
-    document.querySelectorAll('div').forEach(div => div.remove())
-    let newContainer = document.createElement('div');
-    newContainer.classList.add('container');
-    console.log(input)
-    document.body.appendChild(newContainer);
-    for(let i=1; i <= input; i++) {
-        // Creating new cells
-        let newCells = document.createElement('div');
-        newContainer.appendChild(newCells);
-        newContainer.style.display ='grid'
-        newContainer.style.gridTemplateColumns = `repeat(${Math.sqrt(input)}, 1fr)`;
-        newContainer.style.gridTemplateRows = `repeat(${Math.sqrt(input)}, 1fr)`;
-        newContainer.childNodes.forEach(div => {
-            div.style.width =`${900/(Math.sqrt(input))}px`
-            div.style.height = `${900/(Math.sqrt(input))}px`
-        })
-        document.querySelectorAll('div').forEach(div => {
-    
-            div.addEventListener('mouseover', randomHoverEffect);
-            
-            // // Hover effect loop
-            // div.addEventListener('transitionend', e=> {
-            //     if(e.propertyName === 'background-color') {
-            //         e.target.style.backgroundColor = `rgb(${Math.random()*255+1},${Math.random()*255 + 1},${Math.random()*255 +1})`;
-            //     }
-            // })
-            // div.addEventListener('mouseout', e=> e.target.style.backgroundColor = 'black');
-
-            // Darken Effect
-
-
-          
-            const darkenEffect = document.querySelector('.darken');
-            if (color < 1) {
-
-                darkenEffect.addEventListener('click', (e) => {
-                    div.removeEventListener('mouseover', randomHoverEffect);
-                    div.style.backgroundColor = 'white';
-                    div.style.border = '1px solid black';
-                    
-                    div.addEventListener('mouseenter', darkenCells); 
-                    
-                    
-                    
-                           
-                    
-                })
-            } 
-
-           
-        
-           
-        })
-    }
-    
-    
-})
+document.querySelector('button').addEventListener('click', newGridCells);
 
 
 // Creating Hover Effect Functionality
