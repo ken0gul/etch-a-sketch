@@ -52,24 +52,24 @@ function newGridCells() {
         container.appendChild(newCells);
        
         
-        document.querySelectorAll('div').forEach(div => {
-    
-            div.addEventListener('mouseover', randomHoverEffect);
-               
-            const darkenEffect = document.querySelector('.darken');
-            if (color < 1) {
-
-                darkenEffect.addEventListener('click', (e) => {
-                    div.removeEventListener('mouseover', randomHoverEffect);
-                    div.style.backgroundColor = 'white';
-                    div.style.border = '1px solid black';
-                    
-                    div.addEventListener('mouseenter', darkenCells);          
-                    
-                })
-            } 
-        })
     }
+    document.querySelectorAll('div').forEach(div => {
+
+        div.addEventListener('mouseover', randomHoverEffect);
+           
+        const darkenEffect = document.querySelector('.darken');
+        if (color < 1) {
+
+            darkenEffect.addEventListener('click', (e) => {
+                div.removeEventListener('mouseover', randomHoverEffect);
+                div.style.backgroundColor = 'white';
+                div.style.border = '1px solid black';
+                
+                div.addEventListener('mouseenter', darkenCells);          
+                
+            })
+        } 
+    })
 
     // Code below can be used if we give each div 225px height and width
 
