@@ -6,13 +6,23 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    background-image: url("/img-1.jpg");
+}
+
+h1{
+
+    font-size: 52px;
+    text-shadow: 2px 3px 10px red;
+    color: #f7f7f7;
 }
 .container {
     display: grid;
     /* grid-template-columns:repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr); */
+    margin: 30px auto 0 auto;
     width: 500px;
     height: 500px;
 }
@@ -26,9 +36,16 @@ div {
     border-radius: 11px;
 }
 
+.btn-container {
+    display: flex;
+    gap: 35px;
+    margin-top: 30px;
+    background-color: white;
+}
+
 button {
-    padding: 1.2rem 2.4rem;
-    font-size: 22px;
+    padding: 1.2rem 1.8rem;
+    font-size: 18px;
     border-radius: 9px;
     border: none;
     background-color: red;
@@ -40,6 +57,9 @@ button {
 
 button:hover {
     background-color: rgba(255, 0, 0, 0.719);
+    transform: scale(1.2);
 }
+
+
 
 
